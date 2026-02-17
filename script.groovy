@@ -1,5 +1,5 @@
-def buildJar() {
-    echo 'building the application... through script'
+def testing() {
+    echo 'testing the application... through script'
 }
 
 def buildImage() {
