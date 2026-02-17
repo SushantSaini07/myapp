@@ -4,7 +4,7 @@ def buildJar() {
 
 def buildImage() {
     echo "building the docker image... through script"
-    sh 'podman build -t myapp:1.0.1'
+    sh 'podman build -t myapp:1.0.1 .'
 }
 
 def deployApp() {
