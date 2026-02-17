@@ -4,7 +4,7 @@ def testing() {
 
 def buildImage() {
     echo "building the docker image... through script"
-    sh 'podman-remote build -t myapp:1.0.1 .'
+    sh 'podman-remote build  --build-arg HTTP_PROXY=$HTTP_PROXY --build-arg HTTPS_PROXY=$HTTPS_PROXY --build-arg HTTP_PROXY=$NO_PROXY -t myapp:1.0.0 .'
 }
 
 def deployApp() {
