@@ -1,38 +1,39 @@
 #!/usr/bin.env groovy
-
+def gv
 pipeline {   
     agent any
     stages {
+        stage("init"){
+            steps{
+                script{
+                    gv = load "script.groovy"
+                }
+                
+            }
+        }
         stage("test") {
             steps {
                 script {
                     echo "Testing the application..."
+                    gv.testing()
                     echo "Executin pipeline for branch $BRANCH_NAME"
                 }
             }
         }
         stage("build") {
-            when {
-                expression {
-                    BRANCH_NAME == "main"
-                }
-            }
             steps {
                 script {
                     echo "Building the application..."
+                    gv.buildImage()
                 }
             }
         }
 
         stage("deploy") {
-            when {
-                expression {
-                    BRANCH_NAME == "main"
-                }
-            }
             steps {
                 script {
                     echo "Deploying the application..."
+                    gv.deployApp()
                 }
             }
         }               
