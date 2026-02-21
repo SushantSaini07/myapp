@@ -1,6 +1,3 @@
-def testing() {
-    echo 'testing the application... through script'
-}
 
 def buildImage() {
     echo "building the docker image... through script"
