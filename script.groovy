@@ -4,9 +4,10 @@ def buildImage() {
     sh 'podman-remote build  --build-arg HTTP_PROXY=$HTTP_PROXY --build-arg HTTPS_PROXY=$HTTPS_PROXY --build-arg HTTP_PROXY=$NO_PROXY -t myapp:1.0.1 .'
 }
 
-def deployApp() {
+def deployApp(branchname) {
     echo 'deploying the application... through script'
-    sh 'podman-remote run -d -p 8701:8701 --name myapp myapp:1.0.1'
+    def safeBranch = branch_name.replaceAll('/', '-') 
+    sh "podman-remote run -d -p 8701:8701 --name myapp-${safeBranch} myapp:1.0.1"
 }
 
 return this
