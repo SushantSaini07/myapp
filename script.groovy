@@ -12,7 +12,7 @@ def deployApp(branch_name) {
     def safeBranch = branch_name.replaceAll('/', '-')
     sh "podman-remote run -d -p 8701:8701 --name myapp-${safeBranch} myapp:1.0.1"
     echo 'removing container'
-    sh "podman-remote rm -rf myapp-${safeBranch}"
+    sh "podman-remote rm -f myapp-${safeBranch}"
     echo "container removed"
 }
 
