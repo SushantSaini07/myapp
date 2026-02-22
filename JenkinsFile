@@ -32,7 +32,7 @@ pipeline {
                     buildImage(imageName)
                     echo "calling docker login"
                     dockerLogin()
-                    exho "calling dockerPush"
+                    echo "calling dockerPush"
                     dockerPush(imageName)
                     echo "build step done using shared lib"
                 }
