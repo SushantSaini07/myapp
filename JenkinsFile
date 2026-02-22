@@ -1,8 +1,9 @@
-#!/usr/bin.env groovy
+#!/usr/bin/env groovy
 
 @Library('jenkins_shared_lib')
 def gv
 
+def imageName="myapp:v1"
 pipeline {   
     agent any
     stages {
@@ -27,7 +28,11 @@ pipeline {
             steps {
                 script {
                     echo "Building the application..."
-                    buildImage()
+                    echo "calling shared lib to build application"
+                    buildImage(imageName)
+                    dockerLogin()
+                    dockerPush(imageName)
+                    echo "build step done using shared lib"
                 }
             }
         }
