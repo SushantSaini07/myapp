@@ -33,7 +33,7 @@ pipeline {
             steps {
                 script {
                     echo "Deploying the application..."
-                    gv.deployApp($BRANCH_NAME)
+                    gv.deployApp(BRANCH_NAME)
                 }
             }
         }               
