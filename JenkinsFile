@@ -30,7 +30,9 @@ pipeline {
                     echo "Building the application..."
                     echo "calling shared lib to build application"
                     buildImage(imageName)
+                    echo "calling docker login"
                     dockerLogin()
+                    exho "calling dockerPush"
                     dockerPush(imageName)
                     echo "build step done using shared lib"
                 }
